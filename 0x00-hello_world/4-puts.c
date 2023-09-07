@@ -9,6 +9,6 @@
 
 int main(void)
 {
-	puts("\"Priogramming is like building a multilingual puzzle);
+	puts("\"Priogramming is like building a multilingual puzzle");
 	return (0);
 }

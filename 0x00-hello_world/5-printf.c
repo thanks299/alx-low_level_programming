@@ -1,14 +1,13 @@
 #include<stdio.h>
 
-
 /**
- *
- * main - this is my main function to output a result
- *
- * return: always 0 when is done
- */
+* main - Entry point into the program
+*
+* Return: Always 0 (Success)
+*/
 int main(void)
 {
 	printf("with proper grammar, but the outcome is a piece of art,\n");
 	return (0);
 }
+

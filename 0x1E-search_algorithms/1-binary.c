@@ -10,7 +10,7 @@
  *
  * Return: Index of value if found, -1 otherwise
  */
-int linear_search(int *array, size_t left, size_t right, int value)
+int binary_search(int *array, size_t left, size_t right, int value)
 {
 	if (left <= right)
 	{

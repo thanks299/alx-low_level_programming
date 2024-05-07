@@ -1,50 +1,39 @@
-#include <stdio.h>
 #include "search_algos.h"
 
 /**
- * recursive_binary_search - Recursively searches for a value in a sorted array
- * @array: Input array
- * @begin: Starting index
- * @end: Ending index
- * @value: Value to search for
- *
- * Return: Index of value if found, -1 otherwise
- */
-int recursive_binary_search(int *array, size_t begin, size_t end, int value)
-{
-	size_t mid, idx;
-
-	if (begin > end)
-		return (-1);
-
-	mid = begin + (end - begin) / 2;
-
-	printf("Searching in array:");
-	for (idx = begin; idx <= end; idx++)
-		printf("%s%d", (idx == begin) ? "" : ", ", array[idx]);
-	printf("\n\n");
-
-	if (array[mid] == value)
-		return (mid);
-
-	if (array[mid] > value)
-		return (recursive_binary_search(array, begin, mid - 1, value));
-
-	return (recursive_binary_search(array, mid + 1, end, value));
-}
-
-/**
- * binary_search - Calls recursive_binary_search to return the index
- * @array: Input array
- * @size: Size of the array
- * @value: Value to search for
- *
- * Return: Index of value if found, -1 otherwise
- */
+  * binary_search - Searches for a value in a sorted array
+  *                 of integers using binary search.
+  * @array: A pointer to the first element of the array to search.
+  * @size: The number of elements in the array.
+  * @value: The value to search for.
+  *
+  * Return: If the value is not present or the array is NULL, -1.
+  *         else, the index where the value is located.
+  *
+  * Description: Prints the [sub]array being searched after each change.
+  */
 int binary_search(int *array, size_t size, int value)
 {
-	if (!array || size == 0)
+	size_t i, left, right;
+
+	if (array == NULL)
 		return (-1);
 
-	return (recursive_binary_search(array, 0, size - 1, value));
+	for (left = 0, right = size - 1; right >= left;)
+	{
+		printf("Searching in array: ");
+		for (i = left; i < right; i++)
+			printf("%d, ", array[i]);
+		printf("%d\n", array[i]);
+
+		i = left + (right - left) / 2;
+		if (array[i] == value)
+			return (i);
+		if (array[i] > value)
+			right = i - 1;
+		else
+			left = i + 1;
+	}
+
+	return (-1);
 }

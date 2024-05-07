@@ -10,7 +10,7 @@
  *
  * Return: Index of value if found, -1 otherwise
  */
-int linear_search(int *array, size_t left, size_t right, int value)
+int binary_search(int *array, size_t left, size_t right, int value)
 {
 	if (left <= right)
 	{
@@ -28,9 +28,9 @@ int linear_search(int *array, size_t left, size_t right, int value)
 		if (array[mid] == value)
 			return mid;
 		else if (array[mid] < value)
-			return r_binary_search(array, mid + 1, right, value);
+			return binary_search(array, mid + 1, right, value);
 		else
-			return r_binary_search(array, left, mid - 1, value);
+			return binary_search(array, left, mid - 1, value);
 	}
 	return -1;
 }
@@ -50,5 +50,5 @@ int binary_search(int *array, size_t size, int value)
 	if (array == NULL || size == 0)
 		return -1;
 
-	return r_binary_search(array, 0, size - 1, value);
+	return binary_search(array, 0, size - 1, value);
 }
